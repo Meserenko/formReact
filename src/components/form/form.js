@@ -6,7 +6,6 @@ class Form extends React.Component {
         this.state = {
             email: "",
             password: "",
-            nameError: "",
             emailError: "",
             passwordError: ""
         }
@@ -30,8 +29,6 @@ class Form extends React.Component {
         } else if (this.state.password.length < 5) {
             passwordError = "Too short password."
         }
-
-
 
 
         if (!this.state.email.includes("@")) {
@@ -58,9 +55,11 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className='form'>
+                <h2>SIGN IN TO YOUR ACCOUNT</h2>
                 <div>
                     <input
+                        className='input'
                         name="email"
                         placeholder="Email"
                         value={this.state.email}
@@ -72,6 +71,7 @@ class Form extends React.Component {
                 </div>
                 <div>
                     <input
+                        className='input'
                         type="password"
                         name="password"
                         placeholder="Password"
@@ -82,15 +82,17 @@ class Form extends React.Component {
                         {this.state.passwordError}
                     </div>
                 </div>
-                <div>
+                <div className='checkbox'>
                     <input
                         type="checkbox"
                         name="checkbox"
                         onChange={this.handleChange}
-                    />
-                    Keep me signed in
+
+                   /> Keep me signed in
+
                 </div>
-                <button type="submit">Sign in</button>
+                <button className='signIn' type="submit">SIGN IN</button> <br/>
+                <a href="#">Forgot your password?</a>
             </form>
         );
     }

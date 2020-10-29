@@ -1,0 +1,56 @@
+body {
+    background-color: rebeccapurple;
+}
+
+h2 {
+    margin-top: 45px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form {
+    border-radius: 10px;
+    background-color: white;
+    width: 500px;
+    height: 450px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.checkbox {
+    float: left;
+    margin-left: 60px;
+}
+
+.signIn {
+    background-color: rebeccapurple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 30px 2px;
+    width: 75%;
+    cursor: pointer;
+}
+
+
+
