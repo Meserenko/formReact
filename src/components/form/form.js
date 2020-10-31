@@ -28,11 +28,15 @@ class Form extends React.Component {
             passwordError = "The field cannot be empty"
         } else if (this.state.password.length < 5) {
             passwordError = "Too short password."
+        } else {
+            passwordError = ""
         }
 
 
         if (!this.state.email.includes("@")) {
             emailError = "invalid email";
+        } else {
+            emailError = ""
         }
 
         if (emailError || passwordError) {
@@ -47,7 +51,8 @@ class Form extends React.Component {
         e.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-            console.log(this.state);
+            alert(this.state.email);
+            console.log(this.state)
             // clear form
             this.setState(this.state);
         }
