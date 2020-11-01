@@ -6,7 +6,6 @@ class Form extends React.Component {
         this.state = {
             email: "",
             password: "",
-            emailError: "",
             passwordError: ""
         }
     }
@@ -21,7 +20,6 @@ class Form extends React.Component {
     };
 
     validate = () => {
-        let emailError = "";
         let passwordError = "";
 
         if (this.state.password.length === 0) {
@@ -33,18 +31,11 @@ class Form extends React.Component {
         }
 
 
-        if (!this.state.email.includes("@")) {
-            emailError = "invalid email";
-        } else {
-            emailError = ""
-        }
-
-        if (emailError || passwordError) {
-            this.setState({ emailError, passwordError});
+        if (passwordError) {
+            this.setState({passwordError});
             return false;
         }
-
-        return true;
+            return true;
     };
 
     handleSubmit = e => {
@@ -53,7 +44,6 @@ class Form extends React.Component {
         if (isValid) {
             alert(this.state.email);
             console.log(this.state)
-            // clear form
             this.setState(this.state);
         }
     };
@@ -65,14 +55,12 @@ class Form extends React.Component {
                 <div>
                     <input
                         className='input'
+                        type='email'
                         name="email"
                         placeholder="Email"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
-                    <div style={{ fontSize: 12, color: "red" }}>
-                        {this.state.emailError}
-                    </div>
                 </div>
                 <div>
                     <input
