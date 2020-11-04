@@ -6,6 +6,7 @@ class Form extends React.Component {
         this.state = {
             email: "",
             password: "",
+            emailError: "",
             passwordError: ""
         }
     }
@@ -13,26 +14,32 @@ class Form extends React.Component {
     handleChange = e => {
         const isCheckbox = e.target.type === "checkbox";
         this.setState({
-            [e.target.name]: isCheckbox
+            [e.target.type]: isCheckbox
                 ? e.target.checked
                 : e.target.value
         });
     };
 
     validate = () => {
+        let emailError = "";
         let passwordError = "";
 
         if (this.state.password.length === 0) {
             passwordError = "The field cannot be empty"
         } else if (this.state.password.length < 5) {
-            passwordError = "Too short password."
+            passwordError = "Too short password. Minimum 5 symbols required"
         } else {
-            passwordError = ""
+            passwordError = null
         }
 
+        if(this.state.email.length === 0) {
+            emailError = "The field cannot be empty"
+        } else {
+            emailError = null
+        }
 
-        if (passwordError) {
-            this.setState({passwordError});
+        if (passwordError || emailError) {
+            this.setState({passwordError, emailError});
             return false;
         }
             return true;
@@ -61,6 +68,9 @@ class Form extends React.Component {
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
+                    <div className='errors' >
+                        {this.state.emailError}
+                    </div>
                 </div>
                 <div>
                     <input
@@ -71,7 +81,7 @@ class Form extends React.Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
-                    <div style={{ fontSize: 12, color: "red" }}>
+                    <div className='errors' >
                         {this.state.passwordError}
                     </div>
                 </div>
