@@ -52,6 +52,13 @@ class Form extends React.Component {
             alert(this.state.email);
             console.log(this.state)
             this.setState(this.state);
+            this.setState({
+                email: '',
+                password: '',
+                emailError: '',
+                passwordError: ''
+            })
+
         }
     };
 
